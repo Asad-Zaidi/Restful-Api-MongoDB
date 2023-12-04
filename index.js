@@ -54,24 +54,60 @@ function addProduct() {
 }
 async function handleDelete(element) {
     let productElement = element.closest('.product');
-    
     if (!productElement) {
         console.error('Product element not found');
         return;
     }
-
     let id = productElement.getAttribute('data-id');
-
     if (!id) {
         console.error('Product ID not found');
         return;
     }
-
     await fetch(`${API_URL}/${id}`, {
         method: 'DELETE'
     })
         .then(response => response.json())
         .then(data => {
+            fetchProducts();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+async function handleUpdate(element) {
+    let productElement = element.closest('.product');
+    if (!productElement) {
+        console.error('Product element not found');
+        return;
+    }
+    let id = productElement.getAttribute('data-id');
+    if (!id) {
+        console.error('Product ID not found');
+        return;
+    }
+    let title = document.getElementById('title').value;
+    let Model = document.getElementById('model').value;
+    let price = document.getElementById('price').value;
+    if (!title || !Model || !price) return alert('All fields are required');
+
+    let product = {
+        title,
+        Model,
+        price
+    };
+    await fetch(`${API_URL}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(product)
+    })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('title').value = '';
+            document.getElementById('model').value = '';
+            document.getElementById('price').value = '';
             fetchProducts();
         })
         .catch(error => {
