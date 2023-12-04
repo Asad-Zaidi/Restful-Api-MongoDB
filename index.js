@@ -114,5 +114,3 @@ async function handleUpdate(element) {
             console.error('Error:', error);
         });
 }
-
-
