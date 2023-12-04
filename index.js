@@ -53,7 +53,20 @@ function addProduct() {
         });
 }
 async function handleDelete(element) {
-    let id = element.parentNode.querySelector('button').id;
+    let productElement = element.closest('.product');
+    
+    if (!productElement) {
+        console.error('Product element not found');
+        return;
+    }
+
+    let id = productElement.getAttribute('data-id');
+
+    if (!id) {
+        console.error('Product ID not found');
+        return;
+    }
+
     await fetch(`${API_URL}/${id}`, {
         method: 'DELETE'
     })
@@ -65,3 +78,5 @@ async function handleDelete(element) {
             console.error('Error:', error);
         });
 }
+
+
