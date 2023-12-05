@@ -3,8 +3,6 @@ let router = express.Router();
 var Product = require("../../models/productModel");
 var cors = require("cors");
 router.use(cors());
-
-
 router.get("/", async (req, res) => {
     let products = await Product.find();
     return res.send(products);

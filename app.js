@@ -42,7 +42,7 @@ app.use(function (err, req, res, next) {
 });
 
 // mongoose.connect('mongodb://localhost/Products')
-// mongoose.connect('mongodb+srv://asad:1410@cluster0.dviirxh.mongodb.net/') 
+//mongoose.connect('mongodb+srv://asad:1410@cluster0.wrbiuck.mongodb.net/') 
 mongoose.connect(config.get("db"))
   .then(async () => { // for Global server
     console.log("Connected to MogoDB Successfully...!!!");

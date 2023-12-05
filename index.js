@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", fetchProducts);
 let API_URL = "http://localhost:3001/api/products";
+//let API_URL = "mongodb+srv://asad:1410@cluster0.wrbiuck.mongodb.net/test";
+
 
 async function fetchProducts() {
     try {
@@ -8,13 +10,13 @@ async function fetchProducts() {
         let productCardsHTML = '';
         products.forEach((product) => {
             productCardsHTML += `
-    <div class="product">
-        <h3>Name: ${product.title}</h3>
-        <p>Model: ${product.Model}</p>
-        <p>Price: ${product.price}</p>
-        <button onclick="handleDelete(this)">Delete</button>
-        <button onclick="handleUpdate(this)">Edit</button>
-    </div>`;
+            <div class="product" data-id="${product._id}">
+            <h3>Name: ${product.title}</h3>
+            <p>Model: ${product.Model}</p>
+            <p>Price: ${product.price}</p>
+            <button onclick="handleDelete(this)">Delete</button>
+            <button onclick="openEditForm(); handleUpdate(this)">Edit</button>
+        </div>`;
         });
         document.getElementById('products').innerHTML = productCardsHTML;
 
@@ -52,6 +54,7 @@ function addProduct() {
             console.error('Error:', error);
         });
 }
+
 async function handleDelete(element) {
     let productElement = element.closest('.product');
     if (!productElement) {
@@ -86,17 +89,37 @@ async function handleUpdate(element) {
         console.error('Product ID not found');
         return;
     }
-    let title = document.getElementById('title').value;
-    let Model = document.getElementById('model').value;
-    let price = document.getElementById('price').value;
-    if (!title || !Model || !price) return alert('All fields are required');
+    document.getElementById('editForm').setAttribute('data-id', id);
+
+    const response = await fetch(`${API_URL}/${id}`);
+    const product = await response.json();
+
+    document.getElementById('editTitle').value = product.title;
+    document.getElementById('editModel').value = product.Model;
+    document.getElementById('editPrice').value = product.price;
+
+    openEditForm();
+}
+
+
+function submitEditForm() {
+    let id = document.getElementById('editForm').getAttribute('data-id');
+    let title = document.getElementById('editTitle').value;
+    let Model = document.getElementById('editModel').value;
+    let price = document.getElementById('editPrice').value;
+
+    if (!title || !Model || !price) {
+        alert('All fields are required');
+        return;
+    }
 
     let product = {
         title,
         Model,
         price
     };
-    await fetch(`${API_URL}/${id}`, {
+
+    fetch(`${API_URL}/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -105,12 +128,22 @@ async function handleUpdate(element) {
     })
         .then(response => response.json())
         .then(data => {
-            document.getElementById('title').value = '';
-            document.getElementById('model').value = '';
-            document.getElementById('price').value = '';
+            closeEditForm();
             fetchProducts();
         })
         .catch(error => {
             console.error('Error:', error);
         });
 }
+
+function openEditForm() {
+    document.getElementById('editForm').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+}
+
+function closeEditForm() {
+    document.getElementById('editForm').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+}
+
+document.body.innerHTML += '<div id="overlay" class="overlay"></div>';
