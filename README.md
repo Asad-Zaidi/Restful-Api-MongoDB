@@ -1,5 +1,4 @@
 # Restful-Api with MongoDB
-<br>
-This project is a simple REST API built using Node.js and Express framework, which interacts with MongoDB database to perform CRUD operations on the data
-
-
+// 1. Install the dependencies: npm install express, body-parser, mongoose, cors.
+// 2. Start the server by running node index.js in your terminal
+// 3. Open a new tab and run npm start to start the client side application
