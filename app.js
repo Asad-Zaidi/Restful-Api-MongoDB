@@ -8,19 +8,17 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/api/users');
 var productsRouter = require('./routes/api/products')
 var config = require('config')
-
+const punycode = require('punycode'); 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/products', productsRouter);
@@ -42,7 +40,7 @@ app.use(function (err, req, res, next) {
 });
 
 // mongoose.connect('mongodb://localhost/Products')
-//mongoose.connect('mongodb+srv://asad:1410@cluster0.wrbiuck.mongodb.net/') 
+// mongoose.connect('mongodb+srv://asad:1410@cluster0.wrbiuck.mongodb.net/') 
 mongoose.connect(config.get("db"))
   .then(async () => { // for Global server
     console.log("Connected to MogoDB Successfully...!!!");
@@ -50,5 +48,10 @@ mongoose.connect(config.get("db"))
     console.log("Error while connecting to MongoDB");
     console.log(err);
   })
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 module.exports = app;

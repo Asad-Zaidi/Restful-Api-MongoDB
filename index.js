@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", fetchProducts);
 let API_URL = "http://localhost:3001/api/products";
-//let API_URL = "mongodb+srv://asad:1410@cluster0.wrbiuck.mongodb.net/test";
-
+// let API_URL = "mongodb+srv://asad:1410@cluster0.wrbiuck.mongodb.net/test";
 
 async function fetchProducts() {
     try {
@@ -90,10 +89,8 @@ async function handleUpdate(element) {
         return;
     }
     document.getElementById('editForm').setAttribute('data-id', id);
-
     const response = await fetch(`${API_URL}/${id}`);
     const product = await response.json();
-
     document.getElementById('editTitle').value = product.title;
     document.getElementById('editModel').value = product.Model;
     document.getElementById('editPrice').value = product.price;
@@ -147,3 +144,4 @@ function closeEditForm() {
 }
 
 document.body.innerHTML += '<div id="overlay" class="overlay"></div>';
+
