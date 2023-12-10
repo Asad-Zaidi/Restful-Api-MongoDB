@@ -1,32 +1,40 @@
-# RESTFUL API WITH MONGODB
-//
-// This is a simple RESTful API built with Node.js and Express.js. It
-uses MongoDB as the database.
-//
-// This API provides the following endpoints:
-//
-// GET /api/users - Returns a list of all users.
-// POST /api/users - Creates a new user.
-// GET /api/users/:id - Returns a user by id.
-// PUT /api/users/:id - Updates a user by id.
-// DELETE /api/users/:id - Deletes a user by id.
-//
+# API with NodeJS and MongoDB
+## Description
 
-:
-//
-// 1. Install Node.js and MongoDB.
-// 2. Clone this repository.
-// 3. Run `npm install` in the project directory.
-// 4. Run `node app.js` or 'nodemon ./bin/www' to start the server.
-// 5. Open your browser and visit `http://localhost:5500`.
-//
+This is a simple API with NodeJS and MongoDB. It is a simple CRUD with a user model. It perform the following actions:
 
-// 1. Install Node.js from https://nodejs.org/en/download
-/.
-// 2. Install Express.js by running `npm install express` in your project directory
+- Create a user
+- Read a user
+- Update a user
+- Delete a user
+
+## Installation
+
+To install this API you need to have installed NodeJS and MongoDB. Then you need to clone this repository and run the following command:
+
+```bash
+npm install
+```
+```bash
+npm install mongoose
+```
+```bash
+npm install express
+```
+
+## Usage
+
+To use this API you need to run the following command:
+
+```bash
+node index.js
+```
+You can also change the port in the index.js file.
+To test the API at port 5500 you can use Postman or Insomnia and perform the following requests:
 
 
+## Contributing
+Issues and pull requests are welcome!
 
-
-
-
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
