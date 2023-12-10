@@ -28,11 +28,13 @@ To use this API you need to run the following command:
 
 ```bash
 node index.js 
-
+```
 or
 
-nodemon ./bin/www
+```bash
+nodemon ./bin/www 
 ```
+
 You can also change the port in the index.js file.
 To test the API at port 3030 you can use Postman or Insomnia and perform the following requests:
 
