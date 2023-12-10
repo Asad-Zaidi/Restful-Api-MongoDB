@@ -28,7 +28,9 @@ To use this API you need to run the following command:
 
 ```bash
 node index.js 
-<br>or</br>
+
+or
+
 nodemon ./bin/www
 ```
 You can also change the port in the index.js file.
