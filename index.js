@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", fetchProducts);
 let API_URL = "http://localhost:3001/api/products";
-// let API_URL = "mongodb+srv://asad:1410@cluster0.wrbiuck.mongodb.net/test";
+//let API_URL = "mongodb+srv://asad:1410@cluster0.wrbiuck.mongodb.net/test";
 
 async function fetchProducts() {
     try {
@@ -144,4 +144,3 @@ function closeEditForm() {
 }
 
 document.body.innerHTML += '<div id="overlay" class="overlay"></div>';
-
