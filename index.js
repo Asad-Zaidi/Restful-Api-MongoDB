@@ -139,8 +139,8 @@ function openEditForm() {
 }
 
 function closeEditForm() {
-    document.getElementById('editForm').style.display = 'none';
     document.getElementById('overlay').style.display = 'none';
+    document.getElementById('editForm').style.display = 'none';
 }
 
 document.body.innerHTML += '<div id="overlay" class="overlay"></div>';
