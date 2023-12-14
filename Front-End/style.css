@@ -12,6 +12,7 @@ body {
     flex-direction: column;
     align-items: center;   
     background-color: rgb(217, 205, 248); 
+    
 }
 
 
@@ -20,9 +21,11 @@ h1 {
     margin-bottom: 20px;
     font-size: 36px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+    color: black;
+    text-shadow: 0 0 29px #b2f379, 0 0 15px #ffc800; 
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(to right, #3498db, #b2bac2);
+    /* background: linear-gradient(to right, #3498db, #b2bac2); */
+    background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
     padding: 10px 10px;
     width: 100%;
 }
