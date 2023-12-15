@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
+
 @font-face {
     font-family: 'Jameel Noori Nastaleeq';
     src: url('https://www.fontsaddict.com/fontface/jameel-noori-nastaleeq.ttf');
@@ -10,9 +11,8 @@ body {
     margin: 12px;
     display: flex;
     flex-direction: column;
-    align-items: center;   
-    background-color: rgb(217, 205, 248); 
-    
+    align-items: center;
+    background-color: rgb(217, 205, 248);
 }
 
 h1 {
@@ -21,9 +21,10 @@ h1 {
     font-size: 36px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: black;
-    text-shadow: 0 0 29px #b2f379, 0 0 15px #ffc800; 
+    text-shadow: 0 0 29px #b2f379, 0 0 15px #ffc800;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(45deg, #FF5EDF 0%, #04C8DE 100%);background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
+    background: linear-gradient(45deg, #FF5EDF 0%, #04C8DE 100%);
+    background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
     padding: 10px 10px;
     width: 100%;
 }
@@ -145,7 +146,7 @@ button:hover::before {
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     z-index: 999;
-    
+
 }
 
 .overlay {
@@ -166,7 +167,8 @@ button:hover::before {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    margin: 10px; /* Add some margin for spacing */
+    margin: 10px;
+    /* Add some margin for spacing */
 }
 
 .edit-form button.cancel-btn {
@@ -184,4 +186,61 @@ button:hover::before {
     padding: 8px 12px;
     cursor: pointer;
     margin-left: 25%;
+}
+
+
+.checkbox-con {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.checkbox-con input[type="checkbox"] {
+    appearance: none;
+    width: 48px;
+    height: 27px;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    background: white;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.checkbox-con input[type="checkbox"]::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid black;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(13%, 15%);
+    transition: all 0.3s ease-in-out;
+}
+
+.checkbox-con input[type="checkbox"]::after {
+    content: url("data:image/svg+xml,%3Csvg xmlns='://www.w3.org/2000/svg' width='23' height='23' viewBox='0 0 23 23' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.55021 5.84315L17.1568 16.4498L16.4497 17.1569L5.84311 6.55026L6.55021 5.84315Z' fill='%23EA0707' fill-opacity='0.89'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M17.1567 6.55021L6.55012 17.1568L5.84302 16.4497L16.4496 5.84311L17.1567 6.55021Z' fill='%23EA0707' fill-opacity='0.89'/%3E%3C/svg%3E");
+    position: absolute;
+    top: 0;
+    left: 20px;
+}
+
+.checkbox-con input[type="checkbox"]:checked {
+    border: 2px solid #fff;
+    background: #fff;
+}
+
+.checkbox-con input[type="checkbox"]:checked::before {
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid #000000;
+    transform: translate(133%, 13%);
+    transition: all 0.3s ease-in-out;
+}
+
+.dark-mode {
+    background-color: black;
+    color: white;
 }
